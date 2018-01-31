@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie-edge">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+	<title> Add</title>
+</head>
+<body>
+
+	<form action="/process" method="POST">
+			{% csrf_token %}
+			<p>Your Name: <input type="text" name="name"></p>
+			<p>Dojo Location: <select name="location">
+				<option value="Burbank">Burbank</option>
+				<option value="Silicon Valley">Silicon Valley</option>
+				<option value="Orange County">Orange County</option>
+			</select></p>
+			<p>Favorite Language: <select name="language">
+				<option value="JavaScript">JavaScript</option>
+				<option value="Python">Python</option>
+				<option value="HTML">HTML</option>
+			</select></p>
+			<p>Comment (optional) <br />
+				<textarea rows="4" cols="35" name="textarea" placeholder="Comment here..."></textarea></p>
+			<input type="submit" value="Submit" class="submit_button">
+			</form>
+
+
+
+</body>
+</html>
