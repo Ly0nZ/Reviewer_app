@@ -48,7 +48,21 @@ def register(request):
 	return redirect('/user')
 
 def login(request):
-	pass
+	errors = []
+	try:
+		user = User.objects.get(email = request.POST['email'])
+		# b.crypt.checkpw(Given_password, stored_password)
+		if bcrypt.checkpw(request.POST['password'].encode(), user.password.encode()):
+			request.session['user_id'] = user.id
+			return redirect('/user')
+		else:
+			message.error(request, "Login credentials are incorrect.")
+			return redirect('/')
+	
+	except User.DoesNotExist:
+		messages.error(request, "Email does not exist. Please try agin.")
+		return redirect('/')
+
 
 
 

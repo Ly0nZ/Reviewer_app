@@ -27,12 +27,13 @@
 			position: absolute;
 		}
 		.messages {
-			display: inline-block;
+			display: inline;
 			color:red;
 			width: 0 auto;
 			height: 0 auto;
-			margin-left: 30%;
+			margin-left: 30px;
 			margin-bottom: 5px;
+			text-align: center;
 		}
 
 	</style>
@@ -41,13 +42,13 @@
 	<div class="header">
 		<h3>Welcome!</h3>
 	</div>
-		{% if messages %}
+	{% if messages %}
 		<ul class="messages">
 		    {% for message in messages %}
 		    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
 		    {% endfor %}
 		</ul>
-		{% endif %}
+	{% endif %}
 	<div class="register_div">
 		<form action="/register" method="POST">
 			{% csrf_token %}
